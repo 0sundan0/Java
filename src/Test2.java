@@ -11,7 +11,7 @@ import org.openqa.selenium.NoSuchElementException;
 public class Test2 {
 
 
-public static void main(String[] args) {
+public class SeleniumReadConfig {
 	Tesst test  =new Tesst();
 try{
 	
