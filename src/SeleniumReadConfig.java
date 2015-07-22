@@ -57,6 +57,7 @@ public static void main(String[] args) {
 				catch (NoSuchElementException e) {
 				test.logger.error("Exception" +e);
 					test.getscreenshot();
+				test.logger.info("screenshot saved");
 				}
 				
 					
