@@ -14,7 +14,7 @@ public class SeleniumReadConfig {
 	
 	
 public static void main(String[] args) {
-	Tesst test  =new Tesst();
+	Test_Types test  =new Test_Types();
 	test.driver1();
 	test.login();
 	try
