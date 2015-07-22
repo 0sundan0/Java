@@ -58,6 +58,7 @@ public static void main(String[] args) {
 				test.logger.error("Exception" +e);
 					test.getscreenshot();
 				}
+				
 					
 							}
 		}

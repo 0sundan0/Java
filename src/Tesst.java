@@ -74,7 +74,7 @@ public void getscreenshot()
 {
 	File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 	try {
-		FileUtils.copyFile(scrFile, new File("E:\\screenshot.png"));
+		FileUtils.copyFile(scrFile, new File("D:\\screenshot.png"));
 		logger.info("Cauaght exception from main and capturing screenshot");
 	} catch (IOException e1) {
 		logger.error("Error while saving screenshot" +e1);
