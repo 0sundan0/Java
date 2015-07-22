@@ -1,5 +1,6 @@
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.logging.*;
 import org.apache.logging.log4j.Logger;
@@ -15,13 +16,15 @@ public class Test_Types {
 	private WebDriver driver = new FirefoxDriver();;
 	public String baseUrl;
 	public String ID;
+	public String source;
+	public String newtarget;
 	String parentHandle = driver.getWindowHandle();
 	static final Logger logger = LogManager.getLogger(Bar.class.getName());
 	
 		
 public void driver1()
 {
-	baseUrl = "http://10.10.100.53/";
+	baseUrl = "https://www.draw.io/";
 	driver.get(baseUrl);
 	driver.manage().window().maximize();
 	logger.entry();
@@ -69,6 +72,16 @@ public void getoldwindow()
 	driver.switchTo().window(parentHandle);
 	logger.info("Switching to parent window" +parentHandle );
 }
+
+public void draganddrop(String source, String newtarget)
+{
+	WebElement element = driver.findElement(By.xpath(source)); 
+	WebElement target =  driver.findElement(By.xpath(newtarget)) ;
+	(new Actions(driver)).dragAndDrop(element, target).build().perform();
+}
+
+
+
 
 public void getscreenshot()
 {

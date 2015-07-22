@@ -16,7 +16,7 @@ public class SeleniumReadConfig {
 public static void main(String[] args) {
 	Test_Types test  =new Test_Types();
 	test.driver1();
-	test.login();
+	//test.login();
 	try
 	{
 		FileInputStream fileInputStream = new FileInputStream("D:\\Eclipse\\workspace\\Selenium\\src\\TestCases.xls");
@@ -36,7 +36,11 @@ public static void main(String[] args) {
 			HSSFCell A3 = row1.getCell(2);
 			String value = A3.getStringCellValue();
 			test.logger.info("reading value from excel and value is" +value);
-							
+			HSSFCell A4 = row1.getCell(3);
+			String newtarget = A4.getStringCellValue();
+			test.logger.info("reading value from excel and value is" +newtarget);
+			System.out.println(newtarget);
+						
 			switch (action) {
 			case "click":
 				try{
@@ -59,7 +63,20 @@ public static void main(String[] args) {
 					test.getscreenshot();
 				test.logger.info("screenshot saved");
 				}
+			case "DND":
+
+				try{
+					if (Identifier.equals("xpath"))
+					{
+						test.draganddrop(value, newtarget);
+					}
 				
+				}
+				catch (NoSuchElementException e) {
+				test.logger.error("Exception" +e);
+					test.getscreenshot();
+				test.logger.info("screenshot saved");
+				}
 					
 							}
 		}
