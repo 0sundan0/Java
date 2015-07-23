@@ -7,6 +7,8 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.TakesScreenshot;
 
+import com.relevantcodes.extentreports.*;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -19,11 +21,14 @@ public class Test_Types {
 	public String source;
 	public String newtarget;
 	String parentHandle = driver.getWindowHandle();
-	static final Logger logger = LogManager.getLogger(Bar.class.getName());
+	static final Logger logger = LogManager.getLogger(Test_Types.class.getName());
+	static final ExtentReports extent = ExtentReports.get(Test_Types.class);;
 	
-		
+			
 public void driver1()
 {
+	extent.init("C:\\Results.html", true);
+	extent.startTest("Main");
 	baseUrl = "https://www.draw.io/";
 	driver.get(baseUrl);
 	driver.manage().window().maximize();
@@ -40,15 +45,18 @@ public void login()
 public void clickelementbyxpath(String ID){
 	driver.findElement(By.xpath(ID)).click();
 	logger.info("Clicking Element by Xpath" +ID );
+	extent.log(LogStatus.PASS, "clickelementbyxpath", "Clicked on ID" +ID); 
 }
 public void clickelementbyid(String ID){
 	driver.findElement(By.id(ID)).click();
 	logger.info("Clicking Element by ID" +ID );
+	extent.log(LogStatus.PASS, "clickelementbyid", "Clicked on ID" +ID); 
 }
 		
 public void clickelementbycss(String ID){
 	driver.findElement(By.cssSelector(ID));
 	logger.info("Clicking Element by Css" +ID );
+	extent.log(LogStatus.PASS, "clickelementbycss", "Clicked on ID" +ID); 
 }
 
 public void sendkeys(String ID, String text)
@@ -79,7 +87,6 @@ public void draganddrop(String source, String newtarget)
 	WebElement target =  driver.findElement(By.xpath(newtarget)) ;
 	(new Actions(driver)).dragAndDrop(element, target).build().perform();
 }
-
 
 
 

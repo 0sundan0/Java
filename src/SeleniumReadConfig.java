@@ -10,8 +10,11 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.openqa.selenium.NoSuchElementException;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.LogStatus;
+
 public class SeleniumReadConfig {
-	
+
 	
 public static void main(String[] args) {
 	Test_Types test  =new Test_Types();
@@ -62,6 +65,7 @@ public static void main(String[] args) {
 				test.logger.error("Exception" +e);
 					test.getscreenshot();
 				test.logger.info("screenshot saved");
+				test.extent.log(LogStatus.FAIL, "Image", "Action failed at this screen:", "D:\\screenshot.png");
 				}
 			case "DND":
 
@@ -69,6 +73,7 @@ public static void main(String[] args) {
 					if (Identifier.equals("xpath"))
 					{
 						test.draganddrop(value, newtarget);
+						test.logger.info("Dropping content from" +value  + newtarget);
 					}
 				
 				}
