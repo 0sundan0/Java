@@ -20,6 +20,7 @@ public class Test_Types {
 	public String ID;
 	public String source;
 	public String newtarget;
+	
 	String parentHandle = driver.getWindowHandle();
 	static final Logger logger = LogManager.getLogger(Test_Types.class.getName());
 	static final ExtentReports extent = ExtentReports.get(Test_Types.class);;
@@ -46,6 +47,7 @@ public void clickelementbyxpath(String ID){
 	driver.findElement(By.xpath(ID)).click();
 	logger.info("Clicking Element by Xpath" +ID );
 	extent.log(LogStatus.PASS, "clickelementbyxpath", "Clicked on ID" +ID); 
+	
 }
 public void clickelementbyid(String ID){
 	driver.findElement(By.id(ID)).click();
