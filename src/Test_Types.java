@@ -29,8 +29,8 @@ public class Test_Types {
 public void driver1()
 {
 	extent.init("C:\\Results.html", true);
-	extent.startTest("Main");
-	baseUrl = "https://www.draw.io/";
+	//extent.startTest("Main");
+	baseUrl = "https://10.10.100.53/";
 	driver.get(baseUrl);
 	driver.manage().window().maximize();
 	logger.entry();
@@ -65,6 +65,7 @@ public void sendkeys(String ID, String text)
 {
 driver.findElement(By.xpath(ID)).sendKeys(text);
 logger.info("Entering text" +ID);
+extent.log(LogStatus.PASS, "Entering Text", "on the ID" +ID); 
 }
 
 public void getnewwindow()
@@ -73,6 +74,7 @@ public void getnewwindow()
   for (String winHandle : driver.getWindowHandles()) {
 	    driver.switchTo().window(winHandle);
 	    logger.info("Switching to window" +winHandle );
+	    extent.log(LogStatus.PASS, "Switching to New Window", "With ID" +winHandle); 
 	}
   
 }

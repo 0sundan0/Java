@@ -12,7 +12,7 @@ import org.openqa.selenium.NoSuchElementException;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.LogStatus;
-
+/*
 public class SeleniumReadConfig {
 
 	
@@ -25,6 +25,7 @@ public static void main(String[] args) {
 		FileInputStream fileInputStream = new FileInputStream("D:\\Eclipse\\workspace\\Selenium\\src\\TestCases.xls");
 		HSSFWorkbook workbook = new HSSFWorkbook(fileInputStream);
 		HSSFSheet worksheet = workbook.getSheet("testcases");
+		HSSFSheet TestCases =workbook.getSheet("title");
 		int lastrow= worksheet.getLastRowNum();
 		test.logger.info("Number of lines with non null values"+lastrow);
 		
@@ -94,7 +95,7 @@ public static void main(String[] args) {
 }
 }
 
-
+*/
 	
 	
 	
