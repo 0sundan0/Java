@@ -78,6 +78,7 @@ public static void main(String[] args) {
 						if (Identifier.equals("xpath"))
 						{
 							test.clickelementbyxpath(value);
+							test.logger.info("Clicking on xpath" +value);
 						}
 						else if(Identifier.equals("ID"))
 						{
@@ -88,12 +89,11 @@ public static void main(String[] args) {
 						{
 							test.clickelementbycss(value);
 						}
-					}
-					catch (NoSuchElementException e) {
+					}catch (NoSuchElementException e) {
 					//test.logger.error("Exception" +e);
 						test.getscreenshot();
-					test.logger.info("screenshot saved");
-					//test.logger.log(LogStatus.FAIL, "Image", "Action failed at this screen:", "D:\\screenshot.png");
+						test.logger.info("screenshot saved");
+						test.extent.log(LogStatus.FAIL, "Image", "Action failed at this screen:", "D:\\screenshot.png");
 					}
 				case "DND":
 	
