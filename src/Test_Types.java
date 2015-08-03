@@ -6,6 +6,8 @@ import org.openqa.selenium.logging.*;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.TakesScreenshot;
+import java.sql.Timestamp;
+import java.util.Date;
 
 import com.relevantcodes.extentreports.*;
 
@@ -20,15 +22,19 @@ public class Test_Types {
 	public String ID;
 	public String source;
 	public String newtarget;
+	public String filepath;
 	
 	String parentHandle = driver.getWindowHandle();
 	static final Logger logger = LogManager.getLogger(Test_Types.class.getName());
 	static final ExtentReports extent = ExtentReports.get(Test_Types.class);;
+	java.util.Date date= new java.util.Date();
 	
 			
 public void driver1()
 {
-	extent.init("C:\\Results.html", true);
+	long reporttime = date.getTime();
+	filepath= "D:\\Screenshots\\Reports\\"+reporttime+".html";
+	extent.init(filepath, true);
 	//extent.startTest("Main");
 	baseUrl = "https://10.10.100.53/";
 	driver.get(baseUrl);
@@ -97,8 +103,12 @@ public void draganddrop(String source, String newtarget)
 public void getscreenshot()
 {
 	File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	long screenshottime = date.getTime();
+	filepath= "D:\\Screenshots\\"+screenshottime+".png";
 	try {
-		FileUtils.copyFile(scrFile, new File("D:\\screenshot.png"));
+		 File screenshotFile=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		 FileUtils.copyFile(screenshotFile,new File("D:\\Screenshots\\"+screenshottime+".png"));
+		//FileUtils.copyFile(scrFile, new File("D:\\" +filename));
 		logger.info("Cauaght exception from main and capturing screenshot");
 	} catch (IOException e1) {
 		logger.error("Error while saving screenshot" +e1);

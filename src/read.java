@@ -2,7 +2,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Date;
-
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -22,7 +21,7 @@ public static void main(String[] args) {
 	test.login();
 	try
 	{
-		FileInputStream fileInputStream = new FileInputStream("D:\\Eclipse\\workspace\\Selenium\\src\\TestCases.xls");
+		FileInputStream fileInputStream = new FileInputStream("D:\\Eclipse\\workspace\\JavaPrograms\\src\\TestCases.xls");
 		HSSFWorkbook workbook = new HSSFWorkbook(fileInputStream);
 		HSSFSheet worksheet = workbook.getSheet("testcases");
 		HSSFSheet TestCases =workbook.getSheet("title");
@@ -93,7 +92,7 @@ public static void main(String[] args) {
 					//test.logger.error("Exception" +e);
 						test.getscreenshot();
 						test.logger.info("screenshot saved");
-						test.extent.log(LogStatus.FAIL, "Image", "Action failed at this screen:", "D:\\screenshot.png");
+						test.extent.log(LogStatus.FAIL, "Image", "Action failed at this screen:", test.filepath);
 					}
 				case "DND":
 	
@@ -119,6 +118,8 @@ public static void main(String[] args) {
 	 } catch (IOException e) {
 			e.printStackTrace();
 				
+	 }catch(NullPointerException e) {
+			e.printStackTrace();
 	 }
 }
 }

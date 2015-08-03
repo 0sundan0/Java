@@ -50,5 +50,10 @@
 	<classpathentry kind="lib" path="D:/Eclipse/poi-3.12/poi-ooxml-schemas-3.12-20150511.jar"/>
 	<classpathentry kind="lib" path="D:/Eclipse/poi-3.12/poi-scratchpad-3.12-20150511.jar"/>
 	<classpathentry kind="lib" path="D:/Eclipse/extentreports-java-141.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/javamail-1.4.5/lib/dsn.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/javamail-1.4.5/lib/imap.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/javamail-1.4.5/lib/mailapi.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/javamail-1.4.5/lib/pop3.jar"/>
+	<classpathentry kind="lib" path="D:/Eclipse/javamail-1.4.5/lib/smtp.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
