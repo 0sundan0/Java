@@ -17,6 +17,7 @@ public class read {
 	
 public static void main(String[] args) {
 	Test_Types test  =new Test_Types();
+	SendMail mail = new SendMail();
 	test.driver1();
 	test.login();
 	try
@@ -30,6 +31,7 @@ public static void main(String[] args) {
 		test.logger.info("Number of lines with non null values"+lastrow);
 		
 		int temp = 1;
+		String oldtt = null;
 			for (int i= 1; i<= lastrow; i++)
 				{
 				
@@ -46,7 +48,11 @@ public static void main(String[] args) {
 						HSSFCell testcase = row2.getCell(1);
 						String testtitle = testcase.getStringCellValue();
 						test.logger.info("executing Test Case"+testtitle);
-						test.extent.startTest(testtitle);
+						if (testtitle != oldtt)
+						{
+							test.extent.startTest(testtitle);
+						}
+						oldtt = testtitle;
 					}	
 						else 
 							{	
@@ -54,7 +60,7 @@ public static void main(String[] args) {
 							temp = j;
 							break;
 							}
-					System.out.println(j);
+					//System.out.println(j);
 					}
 				
 				HSSFCell A1 = row1.getCell(0);
@@ -121,7 +127,9 @@ public static void main(String[] args) {
 	 }catch(NullPointerException e) {
 			e.printStackTrace();
 	 }
+	//mail.Emailprog();
 }
+
 }
 
 
