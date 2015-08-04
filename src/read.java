@@ -17,7 +17,7 @@ public class read {
 	
 public static void main(String[] args) {
 	Test_Types test  =new Test_Types();
-	SendMail mail = new SendMail();
+	SendAttachmentInEmail mail = new SendAttachmentInEmail();
 	test.driver1();
 	test.login();
 	try
@@ -60,8 +60,7 @@ public static void main(String[] args) {
 							temp = j;
 							break;
 							}
-					//System.out.println(j);
-					}
+						}
 				
 				HSSFCell A1 = row1.getCell(0);
 				String action = A1.getStringCellValue();
@@ -95,8 +94,8 @@ public static void main(String[] args) {
 							test.clickelementbycss(value);
 						}
 					}catch (NoSuchElementException e) {
-					//test.logger.error("Exception" +e);
 						test.getscreenshot();
+						test.logger.error(e);
 						test.logger.info("screenshot saved");
 						test.extent.log(LogStatus.FAIL, "Image", "Action failed at this screen:", test.filepath);
 					}
@@ -109,11 +108,9 @@ public static void main(String[] args) {
 							test.logger.info("Dropping content from" +value  + newtarget);
 						}
 					
-					}
-					catch (NoSuchElementException e) {
-					//test.logger.error("Exception" +e);
+					}catch (NoSuchElementException e) {
 						test.getscreenshot();
-					test.logger.info("screenshot saved");
+						test.logger.info("screenshot saved");
 					}
 						
 					}
@@ -127,7 +124,8 @@ public static void main(String[] args) {
 	 }catch(NullPointerException e) {
 			e.printStackTrace();
 	 }
-	//mail.Emailprog();
+	System.out.println(test.filepath);
+	mail.attach(test.filepath);
 }
 
 }

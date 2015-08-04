@@ -6,6 +6,7 @@ import org.openqa.selenium.logging.*;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.TakesScreenshot;
+
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -22,18 +23,18 @@ public class Test_Types {
 	public String ID;
 	public String source;
 	public String newtarget;
-	public String filepath;
+	public String filepath2;
+	
 	
 	String parentHandle = driver.getWindowHandle();
 	static final Logger logger = LogManager.getLogger(Test_Types.class.getName());
 	static final ExtentReports extent = ExtentReports.get(Test_Types.class);;
 	java.util.Date date= new java.util.Date();
-	
+	long reporttime = date.getTime();
+	public String filepath= "D:\\Screenshots\\Reports\\"+reporttime+".html";
 			
 public void driver1()
 {
-	long reporttime = date.getTime();
-	filepath= "D:\\Screenshots\\Reports\\"+reporttime+".html";
 	extent.init(filepath, true);
 	//extent.startTest("Main");
 	baseUrl = "https://10.10.100.53/";
@@ -98,22 +99,31 @@ public void draganddrop(String source, String newtarget)
 	(new Actions(driver)).dragAndDrop(element, target).build().perform();
 }
 
-
-
 public void getscreenshot()
 {
 	File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 	long screenshottime = date.getTime();
-	filepath= "D:\\Screenshots\\"+screenshottime+".png";
+	filepath2= "D:\\Screenshots\\"+screenshottime+".png";
 	try {
 		 File screenshotFile=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		 FileUtils.copyFile(screenshotFile,new File("D:\\Screenshots\\"+screenshottime+".png"));
-		//FileUtils.copyFile(scrFile, new File("D:\\" +filename));
 		logger.info("Cauaght exception from main and capturing screenshot");
 	} catch (IOException e1) {
 		logger.error("Error while saving screenshot" +e1);
 	}
 }
+
+public void verifyelement()
+{
+	if(driver.findElements(By.xpath(ID)).size() != 0){
+		extent.log(LogStatus.PASS, "Verified the presence of ", "Element" +ID);
+		}else{
+		getscreenshot();
+		extent.log(LogStatus.FAIL, "Image", "Action failed at this screen:", filepath);
+		}
+}
+
+
 
 }
 
